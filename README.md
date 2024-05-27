@@ -1,7 +1,7 @@
 # Rozwiązanie zadania
 Treść code review zawarta w komentarzach:<br />
 [HttpPost("delete/{id}")] // lepiej [HttpDelete("/{id}")] pod jedną sciężką można używac różnych HTTP metod<br/>
-public void Delete(uint id) // niepoprawny zwracany typ ma być ActionTask,lepiej asynchroniczny gdy komunikujemy sie z bazą<br />
+public void Delete(uint id) //niepoprawny typ, ma być ActionTask,lepiej asynchroniczny przy komunikacji z bazą<br />
 {//brakuje w parametrach atrybutu<br />
   User user = _context.Users.FirstOrDefault(user=> user.Id == id); // brak tutaj funkcji asynchronicznej<br />
   _context.Users.Remove(user); //brak sprawdzenia  user != null i zwrócenie  Not Found 404 lub error<br/>
